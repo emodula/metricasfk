@@ -85,11 +85,11 @@ export default () => {
         // Aquí puedes guardar o procesar las métricas recibidas como desees
         console.log('Metricas recibidas:', metricData);
         res.status(200).json({ message: 'Metricas recibidas correctamente.' })*/
-        console.log('escuchando puerto 3000')
+        console.log('escuchando puerto 3001')
     });
 
 
     app.listen(3001, () => {
-        console.log('escuchando puerto 3000')
+        console.log('escuchando puerto 3001')
     })
 }
