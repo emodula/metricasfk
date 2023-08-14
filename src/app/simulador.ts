@@ -130,7 +130,7 @@ export default () => {
 
           //console.log(resultado)
           console.log(resultado)
-          axios.post("http://localhost:3001/metrics", resultado)
+          axios.post("http://64.225.16.70:3001/metrics", resultado)
             .then(response => {
               console.log('Metricas enviadas correctamente.');
             })

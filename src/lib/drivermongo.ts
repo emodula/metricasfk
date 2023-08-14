@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb'
 
 export let query = async (nombreColeccion, query) => {
-    const url = 'mongodb://134.209.63.32:27017'
+    const url = 'mongodb://64.225.16.70:27017'
 
     let cliente = await MongoClient.connect(url)
     let db = cliente.db('prometheus')
@@ -12,7 +12,7 @@ export let query = async (nombreColeccion, query) => {
 }
 
 export let insertOne = async (nombreColeccion, documento) => {
-    const url = 'mongodb://134.209.63.32:27017'
+    const url = 'mongodb://64.225.16.70:27017'
 
     let cliente = await MongoClient.connect(url)
     let db = cliente.db('prometheus')
