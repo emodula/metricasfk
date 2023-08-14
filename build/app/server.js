@@ -1,37 +1,30 @@
-import express from 'express'
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
 const bodyParser = require('body-parser');
-import { insertOne, query as queryMongo } from '../lib/drivermongo';
-import { MongoServerError, MongoServerSelectionError } from 'mongodb'
-
-
-export default () => {
-
-    const app = express()
-
+const drivermongo_1 = require("../lib/drivermongo");
+exports.default = () => {
+    const app = (0, express_1.default)();
     app.use(bodyParser.json());
-
     app.get('/registros', (request, response) => {
-
-        let query: any = {}
-
-        console.log(request.query)
+        let query = {};
+        console.log(request.query);
         //if (request.query['firstName']) { query.firstName = request.query['firstName']; }
-
-        queryMongo('metricas', query)
+        (0, drivermongo_1.query)('metricas', query)
             .then(res => {
-                response
-                    .status(200)
-                    .send(res)
-            })
+            response
+                .status(200)
+                .send(res);
+        })
             .catch(err => {
-                response
-                    .status(500)
-                    .send()
-            })
-
-
-    })
-
+            response
+                .status(500)
+                .send();
+        });
+    });
     /*app.get('/datos', (req, res) => {
         // Lee los datos actuales del archivo y los envía como respuesta
         fs.readFile('datos.json', 'utf8', (err, fileData) => {
@@ -49,7 +42,6 @@ export default () => {
             }
         });
     });*/
-
     /*app.post('/metrics', (request, response) => {
         console.log(request.body)
 
@@ -87,15 +79,12 @@ export default () => {
         //res.status(200).json({ message: 'Metricas recibidas correctamente.' })
         console.log('escuchando puerto 3001')
     });*/
-
     app.post('/metrics', (req, res) => {
         const eventData = req.body; // Datos enviados en el cuerpo del POST
         console.log('Evento recibido:', eventData);
         res.status(200).send('Evento recibido correctamente');
     });
-
-
     app.listen(3001, () => {
-        console.log('escuchando puerto 3001')
-    })
-}
+        console.log('escuchando puerto 3001');
+    });
+};
