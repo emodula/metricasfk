@@ -2,6 +2,7 @@ import express from 'express'
 const bodyParser = require('body-parser');
 import { insertOne, query as queryMongo } from '../lib/drivermongo';
 import { MongoServerError, MongoServerSelectionError } from 'mongodb'
+import convertJson from './json_to_prometh'
 
 
 export default () => {
@@ -91,6 +92,7 @@ export default () => {
     app.post('/metrics', (req, res) => {
         const eventData = req.body; // Datos enviados en el cuerpo del POST
         console.log('Evento recibido:', eventData);
+        //convertJson(eventData)
         res.status(200).send('Evento recibido correctamente');
     });
 
