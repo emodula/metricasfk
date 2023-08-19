@@ -82,6 +82,7 @@ exports.default = () => {
     app.post('/metrics', (req, res) => {
         const eventData = req.body; // Datos enviados en el cuerpo del POST
         console.log('Evento recibido:', eventData);
+        //convertJson(eventData)
         res.status(200).send('Evento recibido correctamente');
     });
     app.listen(3001, () => {
